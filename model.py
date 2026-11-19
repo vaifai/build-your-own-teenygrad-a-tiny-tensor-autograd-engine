@@ -17,8 +17,14 @@ def prod(shape):
             output = output*prod(i)
     return output
 
-# Step 2 - argsort (not yet solved)
-# TODO: implement
+# Step 2 - argsort
+def argsort(values):
+    # TODO: Return the indices that would sort values in ascending order.
+    args = {}
+    for ind, item in enumerate(values):
+        args[ind] = item
+    sorted_args = dict(sorted(args.items(), key=lambda item: item[1]))
+    return list(sorted_args.keys())
 
 # Step 3 - make_op_enums (not yet solved)
 # TODO: implement
