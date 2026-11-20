@@ -112,8 +112,15 @@ def reshape(self, new_shape):
     # TODO: return a new LazyBuffer with the array reshaped to new_shape
     return LazyBuffer(self._np.reshape(new_shape))
 
-# Step 11 - lazybuffer_expand (not yet solved)
-# TODO: implement
+# Step 11 - lazybuffer_expand
+def expand(self, new_shape):
+    # TODO: broadcast this buffer's size-1 dims out to new_shape
+    if isinstance(new_shape, int):
+        new_shape = tuple(new_shape)
+    else:
+        new_shape = tuple(int(d) for d in new_shape)
+    
+    return LazyBuffer(np.array(np.broadcast_to(self._np, new_shape)))
 
 # Step 12 - lazybuffer_permute (not yet solved)
 # TODO: implement
