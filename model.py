@@ -81,8 +81,22 @@ def e(self, op):
 
 LazyBuffer.e = e
 
-# Step 8 - lazybuffer_binary_e (not yet solved)
-# TODO: implement
+# Step 8 - lazybuffer_binary_e
+import enum
+def lazybuffer_binary_e(self, op, other):
+    # TODO: apply a binary elementwise op between two LazyBuffers, return a new LazyBuffer
+    a,b = self._np, other._np
+    if op.name == "ADD":
+        return LazyBuffer(a + b)
+    elif op.name == "SUB":
+        return LazyBuffer(a - b)
+    elif op.name == "MUL":
+        return LazyBuffer(a * b)
+    elif op.name == "DIV":
+        return LazyBuffer(a / b)
+    elif op.name == "MAX":
+        return LazyBuffer(np.maximum(a,b))
+    return LazyBuffer((a < b).astype(a.dtype))
 
 # Step 9 - lazybuffer_r (not yet solved)
 # TODO: implement
